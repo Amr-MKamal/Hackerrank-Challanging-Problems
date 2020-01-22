@@ -7,17 +7,17 @@
 
 int sum(int count, ...){
 int acc=0;
-va_list sumptr;
-va_start (sumptr,count);
-for ( int i=0 ; i<count; i++){acc+=va_arg(sumptr,int);}
-va_end(sumptr);
+va_list sumptr; //starting a pointer to a va_list ( implementation built in GNU compiler )
+va_start (sumptr,count); //assigning the pointer to the first address of the argument list
+for ( int i=0 ; i<count; i++){acc+=va_arg(sumptr,int);} //note that every call to the va_arg increases the sumptr by 1 , and this implementation doesn't allow to access back arg elements , however you can save va_list in a dynamic array
+va_end(sumptr); // free the pointer to re-use 
 return acc;}
 
 int min(int count, ...){
 int minm, temp;
 va_list sumptr;
 va_start (sumptr,count);
-minm=va_arg(sumptr,int);
+minm=va_arg(sumptr,int); //as mentioned above this element[0]
 for ( int i=0 ; i<count; i++){
         temp=va_arg(sumptr,int);
         if (minm>temp){minm=temp;}}
@@ -33,7 +33,7 @@ for ( int i=0 ; i<count; i++){
         if (maxm<temp){maxm=temp;}}
 va_end(sumptr);
 return maxm;}
-int test_implementations_by_sending_three_elements() {
+int test_implementations_by_sending_three_elements(void) {
     srand(time(NULL));
 
     int elements[3];
@@ -72,7 +72,7 @@ int test_implementations_by_sending_three_elements() {
     return elements_sum == expected_elements_sum;
 }
 
-int test_implementations_by_sending_five_elements() {
+int test_implementations_by_sending_five_elements(void) {
     srand(time(NULL));
 
     int elements[5];
@@ -113,7 +113,7 @@ int test_implementations_by_sending_five_elements() {
     return elements_sum == expected_elements_sum;
 }
 
-int test_implementations_by_sending_ten_elements() {
+int test_implementations_by_sending_ten_elements(void) {
     srand(time(NULL));
 
     int elements[10];
@@ -162,7 +162,7 @@ int test_implementations_by_sending_ten_elements() {
     return elements_sum == expected_elements_sum;
 }
 
-int main ()
+int main (void)
 {
     int number_of_test_cases;
     scanf("%d", &number_of_test_cases);

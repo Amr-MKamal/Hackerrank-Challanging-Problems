@@ -17,7 +17,8 @@ int temp=0;
 if (x>1) {if (x%2==0) {temp=1;}} //this is supposed to be boolean but C standard doesn't support , unless you made you're boolean type don't use bool
 if(x==0){temp=1;} //0 is considered even 
 return temp;}
-//didn't really used this function , and you don't even need it , but here it is if you like to waste your time
+//didn't really use this function , and you don't even need it , but here it is if you like to waste your time
+/*
 int find (int* A,int x , int y,int arr_count){
 int ans;
     if(arr_count<y){return 1;}
@@ -26,6 +27,7 @@ int ans;
     if(x+1>arr_count) return A[x];
     ans = pow(A[x],find(A,x+1,y,arr_count));
     return ans;}
+    */
 
 char * solve(int* arr,int arr_count,int x,int y) { //always return odd unless arr[x] is even 
   const char * evn="Even"; const char* odd="Odd";int result;
